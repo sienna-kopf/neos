@@ -24,6 +24,22 @@ With your partner look through `start.rb` and `near_earth_objects.rb`
 
 - Discuss is this 'good' or 'bad' code? Why?
 
+Start file
+ - Processing user data
+ - Processing API data
+ - No adherence to SRP.
+
+  - "bad" code. Hard to understand. Would be hard to debug. Works, but is not built on convention.
+  - refactoring focus on cleaning up file by moving code to appropriate classes to be processed and refactoring code into
+  SRP methods. The start file will just have the responsibility of running a particular method that initiates the user prompt and data return cycle.
+
+Near Earth Object.rb
+ - There is only one method that handles all class responsibilities.
+ - VERY hard to understand, test, and debug.
+
+   - Objectively a "bad" class file. The fact that one method handles so much functionality is absurd.
+   - refactoring focus on breaking up this file into many different helper methods with appropriate tests in order to adhere to SRP.
+
 ---
 
 ### Identify the responsibilities (10 min)
@@ -31,10 +47,13 @@ With your partner look through `start.rb` and `near_earth_objects.rb`
 With your Partner, identify the different responsibilities that exist in each file.
 
 - Does this adhere to SRP?
+  - No, neither file adheres to SRP because each file is managing many different responsibilities in a very unconventional way. The theme being that all the code is lumped together to run this one very specific task, but therefore, none of it can be 1. reused 2. tested effectively 3. understood easily.
 
 - How would you utilize encapsulation and abstraction to refactor this code?
+  - Encapsulating the code is very important because each of the target files are great areas to refactor code into separate encapsulated methods with one single responsibility. This can be done by identifying the pieces of code that demonstrate a single responsibility and pulling those pieces out into their own methods. The code could also benefit from some abstraction to increase the efficiency of so many API data calls by consolidating them into perhaps one API data call that is then manipulated.
 
 - What tools/strategies could you utilize to make this code adhere to SRP?
+  - Some tools/strategies I can use are helper methods, more class files with specific responsibilites, potentially inheritance or modules etc. 
 
 ---
 
